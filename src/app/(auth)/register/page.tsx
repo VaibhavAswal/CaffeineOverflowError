@@ -5,7 +5,7 @@ import Link from "next/link";
 import Loading from "@/components/dotLoading/loading";
 import axios from "axios";
 
-const registerForm = () => {
+const RegisterForm = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [firstName, setFirstName] = React.useState("");
@@ -133,4 +133,4 @@ const registerForm = () => {
   );
 };
 
-export default registerForm;
+export default RegisterForm;

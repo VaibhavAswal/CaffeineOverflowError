@@ -5,7 +5,7 @@ import Link from "next/link";
 import Loading from "@/components/dotLoading/loading";
 import axios from "axios";
 
-const loginForm = () => {
+const LoginForm = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [passError, setPassError] = React.useState("");
@@ -104,4 +104,4 @@ const loginForm = () => {
   );
 };
 
-export default loginForm;
+export default LoginForm;

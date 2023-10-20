@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Loading from "@/components/dotLoading/loading";
+import axios from "axios";
 
 const registerForm = () => {
   const [email, setEmail] = React.useState("");
@@ -16,6 +17,8 @@ const registerForm = () => {
 
   const handleRegister = async (e: any) => {
     try {
+      e.preventDefault();
+      setLoading(true);
       const mailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
       if (!mailRegex.test(email)) {
         setMailError("Please enter a valid email address !");
@@ -31,12 +34,31 @@ const registerForm = () => {
         return;
       }
 
-      e.preventDefault();
-      setLoading(true);
-      console.log(email, password);
+      axios
+        .post("/api/auth/register", {
+          email,
+          password,
+          firstName,
+          lastName,
+        })
+        .then((res) => {
+          console.log(res.data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setPassError(
+            err.response.data.message
+              ? err.response.data.message
+              : "Something went wrong ! Please try again"
+          );
+          setLoading(false);
+        });
     } catch (error: any) {
-      setPassError(error.message);
-    } finally {
+      setPassError(
+        error.message
+          ? error.message
+          : "Something went wrong ! Please try again"
+      );
       setLoading(false);
     }
   };

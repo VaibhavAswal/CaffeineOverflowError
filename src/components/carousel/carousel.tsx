@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./carousel.module.css";
 
 export interface CarouselComponentProps {
@@ -18,7 +19,13 @@ const CarouselComponent = ({ slides }: list) => {
               <h2>{slide.heading}</h2>
               <p>{slide.subHeading}</p>
             </div>
-            <img src={slide.image} alt="" />
+            <Image
+              src={slide.image}
+              alt="carousel image"
+              fill={true}
+              quality={35}
+              sizes="50vw"
+            />
           </div>
         );
       })}

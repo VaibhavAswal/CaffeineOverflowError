@@ -18,3 +18,12 @@ export async function connect() {
     console.log(error);
   }
 }
+
+export async function disconnect() {
+  try {
+    mongoose.connection.close();
+  } catch (error) {
+    console.log("Something went wrong!");
+    console.log(error);
+  }
+}

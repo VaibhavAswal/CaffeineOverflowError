@@ -44,7 +44,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className={styles.authPage}>
-          <div className={styles.logo}>Logo</div>
+          <div className={styles.logo}>MMM</div>
           <div className={styles.authLeft}>
             <CarouselComponent slides={slides} />
           </div>

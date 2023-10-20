@@ -46,6 +46,14 @@
   opacity: 1 !important;
 }
 
+.content h2 {
+  font-size: var(--heading-font-size);
+}
+
+.content p {
+  font-size: var(--base-font-size);
+}
+
 .slider .slide:nth-child(1) {
   animation-delay: 0s;
 }

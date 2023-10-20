@@ -15,7 +15,7 @@ const CarouselComponent = ({ slides }: list) => {
         return (
           <div key={index} className={styles.slide}>
             <div className={styles.content}>
-              <h1>{slide.heading}</h1>
+              <h2>{slide.heading}</h2>
               <p>{slide.subHeading}</p>
             </div>
             <img src={slide.image} alt="" />

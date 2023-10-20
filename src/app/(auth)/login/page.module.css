@@ -1,0 +1,147 @@
+.heading {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: var(--heading-font-size);
+}
+
+.subheading {
+  margin-bottom: 2rem;
+  font-size: var(--base-font-size);
+  font-weight: 200;
+}
+
+.email,
+.password {
+  width: 100%;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--container-color);
+  border-radius: 0.5rem;
+  height: 2.25rem;
+  padding: 0.25rem 0.75rem;
+  font-size: var(--base-font-size);
+  margin-bottom: 0.5rem;
+}
+
+.email:focus,
+.password:focus {
+  outline: none;
+  border-color: var(--text-color);
+}
+
+.button {
+  width: 100%;
+  background-color: var(--text-color);
+  color: var(--body-color);
+  border: none;
+  border-radius: 0.5rem;
+  height: 2.25rem;
+  padding: 0.25rem 0.75rem;
+  font-size: var(--base-font-size);
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+.email,
+.password,
+.button,
+.heading,
+.subheading,
+.error,
+.loading,
+.link,
+.altText {
+  max-width: 350px;
+}
+
+.email,
+.password,
+.button,
+.link a,
+.altText a {
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: var(--primary-color);
+}
+
+.button:disabled {
+  background-color: var(--container-color);
+  cursor: not-allowed;
+  color: var(--text-color);
+}
+
+.button svg {
+  margin-left: 0.5rem;
+  width: 2rem;
+}
+
+.error {
+  color: #ef4444;
+  font-size: var(--extra-small-font-size);
+  margin-bottom: 0.5rem;
+  text-align: left;
+  font-weight: 300;
+  width: 100%;
+}
+
+.link {
+  margin-top: 1rem;
+  text-align: left;
+  font-weight: 300;
+  width: 100%;
+}
+
+.link a {
+  color: var(--text-color);
+  text-decoration: underline;
+  font-size: var(--base-font-size);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.link a:hover {
+  color: var(--primary-color);
+}
+
+.link {
+  font-size: var(--base-font-size);
+  font-weight: 300;
+}
+
+.altText {
+  font-size: var(--extra-small-font-size);
+  font-weight: 300;
+  margin-top: 2rem;
+  text-align: left;
+  width: 100%;
+}
+
+.altText a {
+  color: var(--text-color);
+  text-decoration: underline;
+  font-size: var(--extra-small-font-size);
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.altText a:hover {
+  color: var(--primary-color);
+}
+
+@media only screen and (min-width: 1430px) {
+  .email,
+  .password,
+  .button,
+  .heading,
+  .subheading,
+  .error,
+  .loading,
+  .link,
+  .altText {
+    max-width: 400px;
+  }
+}

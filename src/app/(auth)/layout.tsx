@@ -47,7 +47,7 @@ export default function RootLayout({
           <div className={styles.authLeft}>
             <CarouselComponent slides={slides} />
           </div>
-          <div className={styles.authRight}></div>
+          <div className={styles.authRight}>{children}</div>
         </div>
       </body>
     </html>

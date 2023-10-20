@@ -17,27 +17,27 @@ export default function RootLayout({
       heading: "Your Journey Starts Here",
       subHeading:
         "Embark on a Visual Adventure, explore a World of Imagination and Creativity",
-      image: "https://picsum.photos/800/400",
+      image: "/assets/loginSlider/1.jpg",
     },
     {
       heading: "Discover Unique Artworks",
       subHeading: "Where Every Brushstroke Tells a Story",
-      image: "https://picsum.photos/800/400",
+      image: "/assets/loginSlider/2.jpg",
     },
     {
       heading: "Discover Unique Artworks",
       subHeading: "Where Every Brushstroke Tells a Story",
-      image: "https://picsum.photos/800/400",
+      image: "/assets/loginSlider/3.jpg",
     },
     {
       heading: "Bringing Dreams to Life",
       subHeading: "Shop Original Art that Resonates with Your Soul",
-      image: "https://picsum.photos/800/400",
+      image: "/assets/loginSlider/4.jpg",
     },
     {
       heading: "Bringing Dreams to Life",
       subHeading: "Shop Original Art that Resonates with Your Soul",
-      image: "https://picsum.photos/800/400",
+      image: "/assets/loginSlider/5.jpg",
     },
   ];
   return (

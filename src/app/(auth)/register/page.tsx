@@ -22,7 +22,6 @@ const registerForm = () => {
       }
       if (!firstName || !lastName) {
         setNameError("Please enter first name and last name !");
-        return;
       }
       if (!password) {
         setPassError("Please enter a valid password !");
@@ -49,7 +48,10 @@ const registerForm = () => {
     if (mailRegex.test(email)) {
       setMailError("");
     }
-  }, [email, password]);
+    if (firstName && lastName) {
+      setNameError("");
+    }
+  }, [email, password, firstName, lastName]);
   return (
     <>
       <h2 className={styles.heading}>Create an account</h2>

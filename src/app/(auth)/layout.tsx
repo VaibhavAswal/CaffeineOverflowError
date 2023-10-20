@@ -1,12 +1,4 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
-import "./globals.css";
-
-const poppinsFont = Poppins({
-  subsets: ["latin-ext"],
-  display: "swap",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={poppinsFont.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -46,9 +46,7 @@ const loginForm = () => {
   return (
     <>
       <h2 className={styles.heading}>Login to your account</h2>
-      <p className={styles.subheading}>
-        Enter your email and password below to continue
-      </p>
+      <p className={styles.subheading}>Enter your credentials to continue</p>
       <input
         type="email"
         placeholder="name@example.com"

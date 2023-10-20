@@ -20,7 +20,7 @@
   height: 2.25rem;
   padding: 0.25rem 0.75rem;
   font-size: var(--base-font-size);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .email:focus,

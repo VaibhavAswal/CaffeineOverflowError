@@ -1,0 +1,44 @@
+.authPage {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+}
+
+.authLeft {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  min-height: 100vh;
+  background-color: var(--body-color);
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 2.5rem;
+  left: 2.5rem;
+  z-index: 1;
+}
+
+.authRight {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .authLeft {
+    display: none;
+  }
+  .logo {
+    top: 1.5rem;
+    left: 1.5rem;
+  }
+}

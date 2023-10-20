@@ -1,5 +1,8 @@
 :root {
-  --body-color: #ffffff;
+  --body-color: #222831;
+  --container-color: #393E46;
+  --primary-color: #E1F4F3;
+  --text-color: #EEEEEE;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,12 +27,5 @@ body {
 
 body {
   background-color: var(--body-color);
-}
-
-
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+  color: var(--text-color);
 }

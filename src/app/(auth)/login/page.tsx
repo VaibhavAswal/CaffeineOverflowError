@@ -93,7 +93,7 @@ const LoginForm = () => {
         {loading && <Loading />}
       </button>
       <p className={styles.link}>
-        Don't have an account? <Link href="/register">Register here</Link>
+        Don&quot;t have an account? <Link href="/register">Register here</Link>
       </p>
       <p className={styles.altText}>
         By clicking continue, you agree to our{" "}

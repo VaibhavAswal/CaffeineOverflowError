@@ -14,13 +14,14 @@ export default function RootLayout({
 }) {
   const slides: CarouselComponentProps[] = [
     {
-      heading: "Welcome to Vaibhav's Art Gallery",
-      subHeading: "Explore a World of Imagination and Creativity",
+      heading: "Your Journey Starts Here",
+      subHeading:
+        "Embark on a Visual Adventure, explore a World of Imagination and Creativity",
       image: "https://picsum.photos/800/400",
     },
     {
-      heading: "Welcome to Vaibhav's Art Gallery",
-      subHeading: "Explore a World of Imagination and Creativity",
+      heading: "Discover Unique Artworks",
+      subHeading: "Where Every Brushstroke Tells a Story",
       image: "https://picsum.photos/800/400",
     },
     {

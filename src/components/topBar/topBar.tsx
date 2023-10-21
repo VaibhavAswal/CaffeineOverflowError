@@ -8,14 +8,16 @@ const TopBar = (props: TopBarProps) => {
   const pathname = usePathname();
   const searchParams = useParams();
   const defaultProps = {
-    color: "white",
+    color: "var(--primary-color)",
     startPosition: 0.3,
     stopDelayMs: 200,
-    height: 3,
+    height: 2,
   };
 
   React.useEffect(() => {
-    const { color, startPosition, stopDelayMs } = props ?? defaultProps;
+    const { color, startPosition, stopDelayMs } = props.color
+      ? props
+      : defaultProps;
     NProgress.configure({
       showSpinner: false,
       minimum: 0.1,
@@ -41,7 +43,7 @@ const TopBar = (props: TopBarProps) => {
     };
   }, [pathname, searchParams]);
 
-  const { color, height } = props ?? defaultProps;
+  const { color, height } = props.color ? props : defaultProps;
 
   return (
     <style jsx global>{`
@@ -50,7 +52,7 @@ const TopBar = (props: TopBarProps) => {
         z-index: 999999;
       }
       #nprogress .bar {
-        background: ${color};
+        background: ${color} !important;
         position: fixed;
         z-index: 1031;
         top: 0;

@@ -18,13 +18,16 @@ const LoginForm = () => {
       setLoading(true);
       const mailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
       if (!mailRegex.test(email)) {
+        setLoading(false);
         setMailError("Please enter a valid email address !");
       }
       if (!password) {
+        setLoading(false);
         setPassError("Please enter a valid password !");
         return;
       }
       if (mailError) {
+        setLoading(false);
         return;
       }
       axios
@@ -96,9 +99,15 @@ const LoginForm = () => {
         Don&quot;t have an account? <Link href="/register">Register here</Link>
       </p>
       <p className={styles.altText}>
-        By clicking continue, you agree to our{" "}
-        <Link href="/policies/toc">Terms of Service</Link> and{" "}
-        <Link href="/policies/privacypolicy">Privacy Policy</Link>.
+        By clicking continue, you agree to our&nbsp;
+        <Link href="/policies/toc" prefetch={false}>
+          Terms of Service
+        </Link>
+        &nbsp;and&nbsp;
+        <Link href="/policies/privacypolicy" prefetch={false}>
+          Privacy Policy
+        </Link>
+        .
       </p>
     </>
   );

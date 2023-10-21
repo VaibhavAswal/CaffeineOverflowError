@@ -21,16 +21,19 @@ const RegisterForm = () => {
       setLoading(true);
       const mailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
       if (!mailRegex.test(email)) {
+        setLoading(false);
         setMailError("Please enter a valid email address !");
       }
       if (!firstName || !lastName) {
+        setLoading(false);
         setNameError("Please enter first name and last name !");
       }
       if (!password) {
+        setLoading(false);
         setPassError("Please enter a valid password !");
-        return;
       }
-      if (mailError || nameError) {
+      if (mailError || !password || !firstName || !lastName) {
+        setLoading(false);
         return;
       }
 
@@ -125,9 +128,15 @@ const RegisterForm = () => {
         Already having an account? <Link href="/login">Login here</Link>
       </p>
       <p className={styles.altText}>
-        By clicking continue, you agree to our{" "}
-        <Link href="/policies/toc">Terms of Service</Link> and{" "}
-        <Link href="/policies/privacypolicy">Privacy Policy</Link>.
+        By clicking continue, you agree to our&nbsp;
+        <Link href="/policies/toc" prefetch={false}>
+          Terms of Service
+        </Link>
+        &nbsp;and&nbsp;
+        <Link href="/policies/privacypolicy" prefetch={false}>
+          Privacy Policy
+        </Link>
+        .
       </p>
     </>
   );

@@ -35,6 +35,7 @@ export async function POST(request: NextRequest) {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
+      isVerfied: user.isVerfied,
     };
     //create token
     const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
@@ -44,6 +45,7 @@ export async function POST(request: NextRequest) {
     const response = NextResponse.json(
       {
         message: "Login successful",
+        isVerfied: user.isVerfied,
       },
       { status: 200 }
     );

@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import Loading from "@/components/dotLoading/loading";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
   const [email, setEmail] = React.useState("");
@@ -12,21 +13,25 @@ const LoginForm = () => {
   const [mailError, setMailError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
 
+  const router = useRouter();
+
   const handleLogin = (e: any) => {
     try {
       e.preventDefault();
       setLoading(true);
+      let bool = true;
       const mailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
       if (!mailRegex.test(email)) {
+        bool = false;
         setLoading(false);
         setMailError("Please enter a valid email address !");
       }
       if (!password) {
+        bool = false;
         setLoading(false);
         setPassError("Please enter a valid password !");
-        return;
       }
-      if (mailError) {
+      if (!bool) {
         setLoading(false);
         return;
       }
@@ -36,7 +41,11 @@ const LoginForm = () => {
           password,
         })
         .then((res) => {
-          console.log(res.data);
+          if (res.data.isVerfied) {
+            router.push("/");
+          } else {
+            router.push("/register/verify");
+          }
           setLoading(false);
         })
         .catch((err) => {

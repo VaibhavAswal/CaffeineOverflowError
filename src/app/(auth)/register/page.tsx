@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import Loading from "@/components/dotLoading/loading";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const RegisterForm = () => {
   const [email, setEmail] = React.useState("");
@@ -15,24 +16,30 @@ const RegisterForm = () => {
   const [nameError, setNameError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
 
+  const router = useRouter();
+
   const handleRegister = async (e: any) => {
     try {
       e.preventDefault();
       setLoading(true);
       const mailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+      let bool = true;
       if (!mailRegex.test(email)) {
+        bool = false;
         setLoading(false);
         setMailError("Please enter a valid email address !");
       }
       if (!firstName || !lastName) {
+        bool = false;
         setLoading(false);
         setNameError("Please enter first name and last name !");
       }
       if (!password) {
+        bool = false;
         setLoading(false);
         setPassError("Please enter a valid password !");
       }
-      if (mailError || !password || !firstName || !lastName) {
+      if (!bool) {
         setLoading(false);
         return;
       }
@@ -45,7 +52,11 @@ const RegisterForm = () => {
           lastName,
         })
         .then((res) => {
-          console.log(res.data);
+          if (res.data.isVerfied) {
+            router.push("/");
+          } else {
+            router.push("/register/verify");
+          }
           setLoading(false);
         })
         .catch((err) => {

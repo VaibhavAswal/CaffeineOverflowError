@@ -57,10 +57,6 @@ export async function POST(request: NextRequest) {
     //create token data
     const tokenData = {
       id: savedUser._id,
-      firstName: savedUser.firstName,
-      lastName: savedUser.lastName,
-      email: savedUser.email,
-      isVerfied: savedUser.isVerfied,
     };
     //create token
     const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {

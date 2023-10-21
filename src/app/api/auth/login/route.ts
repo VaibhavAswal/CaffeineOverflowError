@@ -32,10 +32,6 @@ export async function POST(request: NextRequest) {
     //create token data
     const tokenData = {
       id: user._id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      isVerfied: user.isVerfied,
     };
     //create token
     const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {

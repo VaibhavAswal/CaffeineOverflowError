@@ -1,4 +1,4 @@
-import { connect, disconnect } from "@/dbConfig/dbConfig";
+import { connect } from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
@@ -14,7 +14,6 @@ export async function POST(request: NextRequest) {
     //check if user exists
     const user = await User.findOne({ email });
     if (!user) {
-      disconnect();
       return NextResponse.json(
         { message: "Invalid email and or password" },
         { status: 401 }
@@ -24,7 +23,6 @@ export async function POST(request: NextRequest) {
     //check if password is correct
     const validPassword = await bcryptjs.compare(password, user.password);
     if (!validPassword) {
-      disconnect();
       return NextResponse.json(
         { message: "Invalid email and or password" },
         { status: 401 }
@@ -52,10 +50,8 @@ export async function POST(request: NextRequest) {
     response.cookies.set("token", token, {
       httpOnly: true,
     });
-    disconnect();
     return response;
   } catch (error: any) {
-    disconnect();
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import TopBar from "@/components/topBar/topBar";
 
 const poppinsFont = Poppins({
   subsets: ["latin-ext"],
@@ -20,7 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={poppinsFont.className}>{children}</body>
+      <body className={poppinsFont.className}>
+        <TopBar />
+        {children}
+      </body>
     </html>
   );
 }

@@ -27,7 +27,7 @@ const TopBar = (props: TopBarProps) => {
       trickleSpeed: 200,
       ...{ color, startPosition, stopDelayMs },
     });
-  });
+  }, []);
   React.useEffect(() => {
     const handleStart = () => {
       NProgress.start();

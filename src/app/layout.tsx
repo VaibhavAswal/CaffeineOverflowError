@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import TopBar from "@/components/topBar/topBar";
+import Toast from "@/components/toast/toast";
 import { ReduxProvider } from "@/redux/provider";
 
 const poppinsFont = Poppins({
@@ -27,6 +28,7 @@ export default function RootLayout({
           <TopBar />
           {children}
         </ReduxProvider>
+        <Toast />
       </body>
     </html>
   );

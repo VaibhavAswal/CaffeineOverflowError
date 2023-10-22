@@ -80,7 +80,7 @@
 }
 
 .error {
-  color: #ef4444;
+  color: var(--error-color);
   font-size: var(--extra-small-font-size);
   margin-bottom: 0.5rem;
   text-align: left;

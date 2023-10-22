@@ -10,15 +10,17 @@ interface AuthState {
   lastName: string;
   email: string;
   isVerified: boolean;
+  isAdmin: boolean;
 }
 
 const initialState = {
   value: {
-    id: "",
+    email: "",
     firstName: "",
     lastName: "",
-    email: "",
+    isAdmin: false,
     isVerified: false,
+    id: "",
   },
 } as initialState;
 export const auth = createSlice({
@@ -32,6 +34,7 @@ export const auth = createSlice({
         lastName: "",
         email: "",
         isVerified: false,
+        isAdmin: false,
       };
     },
     login: (state, action: PayloadAction<AuthState>) => {

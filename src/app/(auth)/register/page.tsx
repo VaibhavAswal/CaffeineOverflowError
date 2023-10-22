@@ -55,7 +55,7 @@ const RegisterForm = () => {
           if (res.data.isVerfied) {
             router.push("/");
           } else {
-            router.push("/register/verify");
+            router.push("/account/verify");
           }
           setLoading(false);
         })

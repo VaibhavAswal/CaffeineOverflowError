@@ -14,8 +14,10 @@ const VerifyEmail = () => {
   const [email, setEmail] = React.useState("");
   const verify = () => {
     try {
+      // getting token from params
       const token = searchParams.get("token");
       console.log(token);
+      // making api call for verfiying token data
       axios
         .post("/api/auth/verify", {
           token: token,

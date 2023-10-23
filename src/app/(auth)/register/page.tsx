@@ -62,7 +62,7 @@ const RegisterForm = () => {
         .catch((err) => {
           setPassError(
             err.response.data.message
-              ? err.response.data.message
+              ? err.response?.data?.message
               : "Something went wrong ! Please try again"
           );
           setLoading(false);

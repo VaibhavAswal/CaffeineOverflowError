@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   width: 100vw;
-  min-height: 100vh;
+  min-height: var(--vh);
   position: relative;
 }
 
@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   width: 60%;
-  min-height: 100vh;
+  min-height: var(--vh);
   background-color: var(--body-color);
   align-items: flex-start;
   justify-content: space-between;
@@ -29,7 +29,7 @@
   display: flex;
   flex-direction: column;
   width: 40%;
-  min-height: 100vh;
+  min-height: var(--vh);
   align-items: center;
   justify-content: center;
   padding: 2.5rem 2.5rem 2.5rem 1rem;

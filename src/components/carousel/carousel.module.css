@@ -35,7 +35,7 @@
   width: 100%;
   object-fit: cover;
   opacity: 1;
-  filter: brightness(0.6) blur(12px);
+  filter: brightness(0.6) blur(11px);
 }
 
 .slide .content {

@@ -7,7 +7,7 @@ const Loading = () => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       x="0px"
       y="0px"
-      enable-background="new 0 0 0 0"
+      enableBackground="new 0 0 0 0"
       xmlSpace="preserve"
       viewBox="0 44 52 12"
     >

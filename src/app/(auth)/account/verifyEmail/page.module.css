@@ -1,0 +1,17 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  flex-direction: column;
+}
+
+.loading svg {
+  width: 3.5rem;
+}
+
+.errorHeading {
+  font-size: var(--heading-font-size);
+  font-weight: 600;
+  margin-bottom: 3rem;
+}

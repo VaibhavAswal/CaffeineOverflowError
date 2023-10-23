@@ -1,5 +1,5 @@
 "use client";
-import { login } from "@/redux/features/authSlice";
+import { login, logout } from "@/redux/features/authSlice";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -7,6 +7,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import styles from "./page.module.css";
 import Loading from "@/components/dotLoading/loading";
+import Loading2 from "@/components/dotLoading/loading2";
 import Image from "next/image";
 import toast from "react-hot-toast";
 
@@ -72,7 +73,11 @@ const EmailVerifyPage = () => {
           ) {
             router.push("/login");
           }
-          toast.error(err.response.data.message);
+          toast.error(
+            err.response.data.message
+              ? err.response.data.message
+              : "Something went wrong ! Please try again"
+          );
           setResendLoading(false);
         });
     } catch (error: any) {
@@ -82,6 +87,30 @@ const EmailVerifyPage = () => {
           : "Something went wrong ! Please try again"
       );
       setResendLoading(false);
+    }
+  };
+  const handleLogout = () => {
+    try {
+      setLoading(true);
+      axios
+        .get("/api/auth/logout")
+        .then((res) => {
+          dispatch(logout());
+          router.push("/login");
+        })
+        .catch((err) => {
+          toast.error(
+            err.response.data.message
+              ? err.response.data.message
+              : "Something went wrong ! Please try again"
+          );
+        });
+    } catch (error: any) {
+      toast.error(
+        error.message
+          ? error.message
+          : "Something went wrong ! Please try again"
+      );
     }
   };
   React.useEffect(() => {
@@ -94,42 +123,52 @@ const EmailVerifyPage = () => {
   }, [user]);
   return (
     <>
-      <h3 className={styles.heading}>Verify your email address</h3>
-      <Image
-        src="/assets/icons/emailVerify.gif"
-        width={150}
-        height={150}
-        quality={80}
-        alt="verif email"
-      />
-      {!loading && (
-        <p className={styles.subheading}>
-          We have send a verification link to{" "}
-          <span className={styles.email}>{user.email}</span> Please click on the
-          link to verify your email address
-        </p>
+      {loading && (
+        <div className={styles.loading}>
+          <Loading2 />
+        </div>
       )}
-      <div className={styles.buttons}>
-        {!loading && (
-          <button
-            className={`${styles.button} ${styles.resend}`}
-            disabled={resendLoading || loading}
-            onClick={resendLink}
-          >
-            {resendLoading ? "Sending" : "Resend Link"}
-            {resendLoading && <Loading />}
-          </button>
-        )}
-        {!resendLoading && (
-          <button
-            className={`${styles.button} ${styles.refresh}`}
-            onClick={getData}
-            disabled={loading}
-          >
-            {loading ? "loading" : "Refresh"}
-          </button>
-        )}
-      </div>
+
+      {!loading && (
+        <>
+          <h3 className={styles.heading}>Verify your email address</h3>
+          <Image
+            src="/assets/icons/emailVerify.gif"
+            width={150}
+            height={150}
+            quality={80}
+            alt="verif email"
+          />
+
+          <p className={styles.subheading}>
+            We have send a verification link to{" "}
+            <span className={styles.email}>{user.email}</span>. Please click on
+            the link to verify your email address
+          </p>
+
+          <div className={styles.buttons}>
+            <button
+              className={`${styles.button} ${styles.resend}`}
+              disabled={resendLoading || loading}
+              onClick={resendLink}
+            >
+              {resendLoading ? "Sending" : "Resend Link"}
+              {resendLoading && <Loading />}
+            </button>
+
+            <button
+              className={`${styles.button} ${styles.refresh}`}
+              onClick={getData}
+              disabled={loading}
+            >
+              {loading ? "loading" : "Refresh"}
+            </button>
+          </div>
+          <p className={styles.logout} onClick={handleLogout}>
+            Logout
+          </p>
+        </>
+      )}
     </>
   );
 };

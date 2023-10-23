@@ -6,16 +6,24 @@ connect();
 
 export async function POST(request: NextRequest) {
   try {
-    const reqBody = await request.json();
-    const { token } = reqBody;
+    // get token from header
+    const data = await request.json();
+    // slice token to get only token
+    const token = data.token;
 
     const user = await User.findOne({
       verifyToken: token,
       verifyTokenExpiry: { $gt: Date.now() },
     });
 
+    // check if user have token but it is expired
     if (!user) {
-      return NextResponse.json({ error: "Invalid token" }, { status: 400 });
+      return NextResponse.json(
+        {
+          message: "Invalid link",
+        },
+        { status: 400 }
+      );
     }
 
     user.isVerfied = true;
@@ -27,10 +35,11 @@ export async function POST(request: NextRequest) {
       {
         message: "Email verified successfully",
         success: true,
+        email: user.email,
       },
       { status: 200 }
     );
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ message: error.message }, { status: 500 });
   }
 }

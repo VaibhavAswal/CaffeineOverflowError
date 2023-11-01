@@ -12,36 +12,36 @@ const VerifyEmail = () => {
   const [error, setError] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
   const [email, setEmail] = React.useState("");
-  const verify = () => {
-    try {
-      // getting token from params
-      const token = searchParams.get("token");
-      console.log(token);
-      // making api call for verfiying token data
-      axios
-        .post("/api/auth/verify", {
-          token: token,
-        })
-        .then((res) => {
-          setEmail(res.data.email);
-          setSuccess(true);
-          setLoading(false);
-          console.log(res.data);
-        })
-        .catch((err) => {
-          setError(true);
-          setLoading(false);
-        });
-    } catch (error: any) {
-      setLoading(false);
-      setError(true);
-      toast.error(error.message ? error.message : "Some error occured!");
-    }
-  };
 
   React.useEffect(() => {
+    const verify = () => {
+      try {
+        // getting token from params
+        const token = searchParams.get("token");
+        console.log(token);
+        // making api call for verfiying token data
+        axios
+          .post("/api/auth/verify", {
+            token: token,
+          })
+          .then((res) => {
+            setEmail(res.data.email);
+            setSuccess(true);
+            setLoading(false);
+            console.log(res.data);
+          })
+          .catch((err) => {
+            setError(true);
+            setLoading(false);
+          });
+      } catch (error: any) {
+        setLoading(false);
+        setError(true);
+        toast.error(error.message ? error.message : "Some error occured!");
+      }
+    };
     verify();
-  }, []);
+  }, [searchParams]);
   return (
     <>
       {loading && (

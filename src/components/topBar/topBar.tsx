@@ -7,12 +7,15 @@ import { usePathname, useParams } from "next/navigation";
 const TopBar = (props: TopBarProps) => {
   const pathname = usePathname();
   const searchParams = useParams();
-  const defaultProps = {
-    color: "var(--primary-color)",
-    startPosition: 0.3,
-    stopDelayMs: 200,
-    height: 2,
-  };
+  const defaultProps = React.useMemo(
+    () => ({
+      color: "var(--primary-color)",
+      startPosition: 0.3,
+      stopDelayMs: 200,
+      height: 2,
+    }),
+    []
+  );
 
   React.useEffect(() => {
     const { color, startPosition, stopDelayMs } = props.color
@@ -33,11 +36,11 @@ const TopBar = (props: TopBarProps) => {
       let vh = window.innerHeight;
       document.documentElement.style.setProperty("--vh", `${vh}px`);
     });
-    window.addEventListener("resize", function () {
-      let vh = window.innerHeight;
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-    });
-  }, []);
+    // window.addEventListener("resize", function () {
+    //   let vh = window.innerHeight;
+    //   document.documentElement.style.setProperty("--vh", `${vh}px`);
+    // });
+  }, [props, defaultProps]);
   React.useEffect(() => {
     const handleStart = () => {
       NProgress.start();

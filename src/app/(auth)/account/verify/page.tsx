@@ -51,7 +51,11 @@ const EmailVerifyPage = () => {
           setLoading(false);
         });
     } catch (error: any) {
-      toast;
+      toast.error(
+        error.message
+          ? error.message
+          : "Something went wrong ! Please try again"
+      );
       setLoading(false);
     }
   };

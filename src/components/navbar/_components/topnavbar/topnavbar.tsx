@@ -7,10 +7,10 @@ const Topnavbar = () => {
   return (
     <div className={styles.navbar}>
       <div className={styles.logo}>logo</div>
-      <div className={styles.search}>
-        <Search />
+      <Search />
+      <div className={styles.profile}>
+        <Profile />
       </div>
-      <Profile />
     </div>
   );
 };

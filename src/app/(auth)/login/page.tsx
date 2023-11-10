@@ -5,8 +5,12 @@ import Link from "next/link";
 import Loading from "@/components/dotLoading/loading";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { login } from "@/redux/features/authSlice";
+import { AppDispatch } from "@/redux/store";
 
 const LoginForm = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [passError, setPassError] = React.useState("");
@@ -41,6 +45,16 @@ const LoginForm = () => {
           password,
         })
         .then((res) => {
+          dispatch(
+            login({
+              email: res.data.email,
+              isVerified: res.data.isVerfied,
+              firstName: res.data.firstName,
+              lastName: res.data.lastName,
+              id: res.data._id,
+              isAdmin: res.data.isAdmin,
+            })
+          );
           if (res.data.isVerfied) {
             router.push("/");
           } else {

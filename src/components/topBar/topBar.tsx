@@ -30,7 +30,7 @@ const TopBar = (props: TopBarProps) => {
       trickleSpeed: 200,
       ...{ color, startPosition, stopDelayMs },
     });
-    let vh = window.innerHeight;
+    let vh = window.innerHeight - 1;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
     window.addEventListener("load", function () {
       let vh = window.innerHeight;

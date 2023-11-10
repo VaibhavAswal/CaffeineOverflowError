@@ -1,3 +1,9 @@
-.profile p {
-  font-size: var(--extra-small-font-size);
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile > svg {
+  width: 2rem;
 }

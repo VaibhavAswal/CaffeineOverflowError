@@ -39,10 +39,12 @@
   .authLeft {
     display: none;
   }
+
   .logo {
     top: 1.5rem;
     left: 1.5rem;
   }
+
   .authRight {
     width: 100%;
     padding: 1.5rem;
@@ -53,6 +55,7 @@
   .authLeft {
     width: 60%;
   }
+
   .authRight {
     width: 40%;
     margin-right: 10vw;

@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
   const currentPath = request.nextUrl.pathname;
 
   const onlyPublicPaths = ["/login", "/register"];
-  const protectedPaths = ["/profile", "/account/verify"];
+  const protectedPaths = ["/user/profile", "/account/verify"];
 
   const token = request.cookies.get("token")?.value || "";
 
@@ -20,5 +20,5 @@ export function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/login", "/register", "/account/verify", "/profile"],
+  matcher: ["/login", "/register", "/account/verify", "/user/profile"],
 };

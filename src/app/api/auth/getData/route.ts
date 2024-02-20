@@ -13,7 +13,16 @@ export async function GET(request: NextRequest) {
       "-password -createdAt -updatedAt -__v -verifyToken -verifyTokenExpiry -forgotPasswordToken -forgotPasswordTokenExpiry"
     );
     if (!user) {
-      return NextResponse.json({ error: "invalid token" }, { status: 400 });
+      const response = NextResponse.json(
+        {
+          message: "invalid",
+        },
+        { status: 403 }
+      );
+      response.cookies.set("token", "", {
+        httpOnly: true,
+      });
+      return response;
     }
     return NextResponse.json(
       {

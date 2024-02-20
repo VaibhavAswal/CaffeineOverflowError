@@ -11,7 +11,7 @@ import { FaRegUser } from "react-icons/fa";
 
 const Profile = () => {
   const router = useRouter();
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   const user = useAppSelector((state) => state.authReducer.value);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -57,7 +57,7 @@ const Profile = () => {
         </p>
       )}
       {!loading && user.id && (
-        <div>
+        <div onClick={() => router.push("/user/profile")}>
           <FaRegUser />
         </div>
       )}
